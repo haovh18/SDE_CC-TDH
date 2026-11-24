@@ -1,0 +1,32 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging and virtual environments
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Coverage and local tooling
+.coverage
+.coverage.*
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+
+# Experiment outputs
+runs/
+
+# Generated dataset artifacts
+dataset/**/media/*
+dataset/**/protocol/*
+
+# Local AVLLM weights
+model/avllm/*/*

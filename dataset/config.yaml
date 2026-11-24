@@ -1,0 +1,20 @@
+schema_version: 1
+
+datasets:
+  avqa:
+    repo_id: juyil/AVQA-videos
+    repo_type: dataset
+    revision: e9538b7abd3dcf018f85c9e431d51f542728c13b
+    local_dir: AVQA/raw
+    media_dir: AVQA/raw
+    protocol_dir: AVQA/protocol
+  music_avqa:
+    git_url: https://github.com/DragonLiu1995/MUSIC-AVQA-v2.0.git
+    git_revision: 7db4f5480dcf833d4aa588235bc7a533c57c1719
+    git_dir: Music_AVQA/repository
+    hf_annotations_repo: DraculaDragon/MUSIC-AVQA-v2.0
+    hf_annotations_dir: Music_AVQA/hf_annotations
+    additional_video_archive: https://www.dropbox.com/scl/fi/yfrrsuds95tmtgxirxy6e/collect_new_set.rar?rlkey=izt6ldb1czlpnhy8y6masi2jm&dl=1
+    archive_dir: Music_AVQA/archives/collect_new_set.rar
+    media_dir: Music_AVQA/media
+    protocol_dir: Music_AVQA/protocol

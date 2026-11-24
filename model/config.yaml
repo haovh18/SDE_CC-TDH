@@ -1,0 +1,50 @@
+schema_version: 1
+
+avllms:
+  qwen_omni_3b:
+    repo_id: Qwen/Qwen2.5-Omni-3B
+    revision: f75b40e3da2003cdd6e1829b1f420ca70797c34e
+    local_dir: avllm/Qwen2.5-Omni-3B
+    files_sha256:
+      config.json: 20790f362c37a1718a3e764f597ae33dfc20177399762018dffaabf8321d4dd1
+      model.safetensors.index.json: 5b7629198e2ef80e37612a491d9bfd71639d2f212632d36d8ab086922e74e129
+      chat_template.json: 1933f7ca08e6503460e981d9037ddc0b851196abfa3aceea52d6ee0c0fdfd9f0
+      tokenizer.json: 8441917e39ae0244e06d704b95b3124795cec478e297f9afac39ba670d7e9d99
+      tokenizer_config.json: 569aa7c9171e36dfff80f0a7550ab0c9c09e46ac840fea5030641417394fb0d2
+  qwen_omni_7b:
+    repo_id: Qwen/Qwen2.5-Omni-7B
+    local_dir: avllm/Qwen2.5-Omni-7B
+  minicpm_o_45_gptq:
+    repo_id: openbmb/MiniCPM-o-4_5-GPTQ
+    local_dir: avllm/MiniCPM-o-4_5-GPTQ
+
+experts:
+  imagebind:
+    code_url: https://github.com/facebookresearch/ImageBind.git
+    code_revision: 53680b02d7e37b19b124fa37bae4b6c98c38f5be
+    code_dir: experts/ImageBind/code
+    checkpoint_url: https://dl.fbaipublicfiles.com/imagebind/imagebind_huge.pth
+    checkpoint_dir: experts/ImageBind/imagebind_huge.pth
+  muq:
+    repo_id: OpenMuQ/MuQ-large-msd-iter
+    local_dir: experts/MuQ/MuQ-large-msd-iter
+  videomae:
+    repo_id: MCG-NJU/videomae-base
+    revision: dc740ceda42fce44faed2ea03c6d447db72f6af9
+    local_dir: experts/VideoMAE/hf_videomae_base
+  clip:
+    code_url: https://github.com/GeWu-Lab/TSPM.git
+    code_revision: 0106ce4127b8aa6728ee09439a59fbe7f19fe2f4
+    code_dir: experts/CLIP/TSPM
+    checkpoint_url: https://openaipublic.azureedge.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt
+    checkpoint_sha256: 3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02
+    checkpoint_dir: experts/CLIP/ViT-L-14-336px.pt
+
+external:
+  qa_tiger:
+    git_url: https://github.com/AIM-SKKU/QA-TIGER.git
+    git_revision: 549e65381b82962cb340238a6d8c6f696160d850
+    git_dir: baselines/QA-TIGER/code
+    checkpoint_repo: redleaf-Kim/qa-tiger
+    checkpoint_revision: 865cb64a8962c97490ab04b20cdd71857246474d
+    checkpoint_dir: baselines/QA-TIGER/checkpoints

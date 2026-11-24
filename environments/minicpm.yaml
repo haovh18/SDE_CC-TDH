@@ -1,0 +1,29 @@
+name: sde-cctdh-minicpm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - ffmpeg=7.1
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu128
+      - torch==2.9.1+cu128
+      - torchaudio==2.9.1+cu128
+      - torchvision==0.24.1+cu128
+      - accelerate==1.14.0
+      - decord==0.6.0
+      - gptqmodel==2.2.0
+      - huggingface-hub==0.36.2
+      - librosa==0.9.0
+      - minicpmo-utils[all]==1.0.6
+      - numpy==2.2.6
+      - opencv-python-headless==5.0.0.93
+      - pandas==2.3.3
+      - peft==0.10.0
+      - pillow==10.4.0
+      - pyarrow==25.0.0
+      - PyYAML==6.0.3
+      - requests==2.34.2
+      - scikit-learn==1.7.2
+      - soundfile==0.12.1
+      - transformers==4.51.0

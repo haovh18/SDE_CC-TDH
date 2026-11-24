@@ -1,0 +1,26 @@
+name: sde-cctdh-qwen
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - ffmpeg
+  - pytorch=2.5.1
+  - torchaudio=2.5.1
+  - torchvision=0.20.1
+  - pytorch-cuda=12.4
+  - pip:
+      - accelerate==1.2.1
+      - av==14.0.1
+      - decord==0.6.0
+      - huggingface-hub==0.30.2
+      - numpy==1.26.4
+      - pandas==2.2.3
+      - pyarrow==18.1.0
+      - PyYAML==6.0.2
+      - qwen-omni-utils==0.0.9
+      - requests==2.32.3
+      - scikit-learn==1.6.1
+      - transformers==4.51.3

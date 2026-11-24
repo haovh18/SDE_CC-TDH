@@ -1,0 +1,183 @@
+schema_version: 1
+seed: 18
+
+protocols:
+  music_avqa_42:
+    dataset: music_avqa
+    target: full_answer
+    prompt: |-
+      You are answering a question about a musical performance video.
+      Use the available visual and audio evidence.
+      Choose exactly one answer from the allowed answer list.
+      Return only the answer, with no explanation.
+
+      Allowed answers:
+      {answers}
+
+      Question:
+      {question}
+    answer_vocabulary:
+      - accordion
+      - acoustic_guitar
+      - bagpipe
+      - banjo
+      - bassoon
+      - cello
+      - clarinet
+      - congas
+      - drum
+      - eight
+      - electric_bass
+      - erhu
+      - five
+      - flute
+      - four
+      - guzheng
+      - indoor
+      - left
+      - middle
+      - more than ten
+      - nine
+      - "no"
+      - one
+      - outdoor
+      - piano
+      - pipa
+      - right
+      - saxophone
+      - seven
+      - simultaneously
+      - six
+      - suona
+      - ten
+      - three
+      - trumpet
+      - tuba
+      - two
+      - ukulele
+      - violin
+      - xylophone
+      - "yes"
+      - zero
+
+  avqa_4way:
+    dataset: avqa
+    target: option_letter
+    prompt: |-
+      You are answering a multiple-choice question about an audio-visual video.
+      Use the available visual and audio evidence.
+      Choose exactly one option.
+      Return only one letter: A, B, C, or D.
+
+      Question:
+      {question}
+
+      Options:
+      A. {option_a}
+      B. {option_b}
+      C. {option_c}
+      D. {option_d}
+
+      Answer:
+    minimax_system_prompt: |-
+      You are answering a multiple-choice question about the attached video and its audio.
+      Use the visual content and audio when relevant.
+      Select the single best answer from the four options.
+      Reply with exactly one uppercase letter: A, B, C, or D.
+      Do not provide an explanation or any other text.
+    minimax_user_prompt: |-
+      Question:
+      {question}
+
+      Options:
+      A. {option_a}
+      B. {option_b}
+      C. {option_c}
+      D. {option_d}
+
+      Answer with exactly one letter.
+    minimax_format_retry: "Reply with exactly one uppercase letter: A, B, C, or D."
+
+models:
+  qwen_omni_3b:
+    paper_name: Qwen2.5-Omni-3B
+    family: qwen2_5_omni
+    source: Qwen/Qwen2.5-Omni-3B
+    local_dir: model/avllm/Qwen2.5-Omni-3B
+    availability: downloadable
+  qwen_omni_7b:
+    paper_name: Qwen2.5-Omni-7B
+    family: qwen2_5_omni
+    source: Qwen/Qwen2.5-Omni-7B
+    local_dir: model/avllm/Qwen2.5-Omni-7B
+    availability: downloadable
+  minicpm_o_45_gptq:
+    paper_name: MiniCPM-o-4.5-GPTQ
+    family: minicpm_o_45
+    source: openbmb/MiniCPM-o-4_5-GPTQ
+    local_dir: model/avllm/MiniCPM-o-4_5-GPTQ
+    availability: downloadable
+  minimax_m3:
+    paper_name: MiniMax M3
+    family: minimax_anthropic_api
+    source: MiniMax-M3
+    availability: api_only
+  qa_tiger:
+    paper_name: QA-TIGER
+    family: external_predictions
+    source: redleaf-Kim/qa-tiger
+    local_dir: model/baselines/QA-TIGER/checkpoints
+    availability: external_framework
+  expert_ensemble:
+    paper_name: Expert ensemble
+    family: prediction_ensemble
+    source: ImageBind + MuQ + VideoMAE expert heads
+    availability: local_predictions
+  task_lora:
+    paper_name: Task LoRA
+    family: external_predictions
+    availability: trained_adapter
+  dm_lora:
+    paper_name: Data-Matched LoRA
+    family: external_predictions
+    availability: trained_adapter
+  vanilla_kd:
+    paper_name: Vanilla KD
+    family: expert_transfer_lora
+    availability: trainable
+  rwkd:
+    paper_name: RWKD
+    family: expert_transfer_lora
+    availability: trainable
+  ufa:
+    paper_name: Unsigned Feature Alignment
+    family: expert_transfer_lora
+    availability: trainable
+
+generation:
+  do_sample: false
+  temperature: 0
+  max_new_tokens:
+    music_avqa: 8
+    avqa: 4
+  qwen_video:
+    fps: 1.0
+    min_frames: 4
+    max_frames: 128
+    total_pixels: 12845056
+  minicpm:
+    max_slice_nums: 1
+    max_input_length: 40960
+
+distillation:
+  vanilla_kd:
+    steps: 64
+    temperature: 2.0
+  rwkd:
+    steps: 64
+    temperature: 2.0
+  ufa:
+    steps: 64
+    lambda: 0.02
+    hidden_layer: 30
+    projector_rank: 32
